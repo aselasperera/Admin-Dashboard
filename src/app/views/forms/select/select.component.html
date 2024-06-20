@@ -1,0 +1,33 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12" class="text-center">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Sign Out</strong>
+      </c-card-header>
+      <c-card-body>
+        <p class="mb-4">Are you sure you want to sign out?</p>
+        <c-row class="justify-content-center">
+          <c-col xs="auto">
+            <button cButton class="btn btn-danger mb-2" type="button" >Sign Out</button>
+          </c-col>
+          <c-col xs="auto">
+            <button cButton class="btn btn-secondary mb-2" type="button" >Cancel</button>
+          </c-col>
+        </c-row>
+        <p class="text-muted mt-3">You have unsaved changes. Please save your work before signing out.</p>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+
+<script>
+  function signOut() {
+    // Sign out logic here
+    alert('You have been signed out.');
+  }
+
+  function cancel() {
+    // Cancel sign out logic here
+    alert('Sign out canceled.');
+  }
+</script>

@@ -1,0 +1,58 @@
+<div class="ms-6">
+  <button (click)="addUserRole()" class="btn btn-primary mb-3">Create User Role</button>
+  <!-- Form for adding a new user role -->
+  <div *ngIf="showForm" class="card card-custom mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Add New User Role</h5>
+      <div class="mb-3">
+        <label for="roleName" class="form-label">Role Name</label>
+        <input [(ngModel)]="newUserRole.roleName" type="text" class="form-control" id="roleName" placeholder="Enter role name">
+      </div>
+      <div class="mb-3">
+        <label for="roleId" class="form-label">Role ID</label>
+        <input [(ngModel)]="newUserRole.roleId" type="text" class="form-control" id="roleId" placeholder="Enter role ID">
+      </div>
+      <div class="mb-3">
+        <label for="userName" class="form-label">User Name</label>
+        <input [(ngModel)]="newUserRole.userName" type="text" class="form-control" id="userName" placeholder="Enter user name">
+      </div>
+      <div class="mb-3">
+        <label for="gender" class="form-label">Gender</label>
+        <select [(ngModel)]="newUserRole.gender" class="form-select" id="gender">
+          <option value="" disabled>Select gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <button (click)="saveNewUserRole()" class="btn btn-success me-2">Save</button>
+      <button (click)="cancelAddUserRole()" class="btn btn-secondary">Cancel</button>
+    </div>
+  </div>
+
+  <!-- User Role Table -->
+  <div class="card card-custom">
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>Role Name</th>
+          <th>Role ID</th>
+          <th>User Name</th>
+          <th>Gender</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userRole of userRoles; let i = index">
+          <td contenteditable="true">{{ userRole.roleName }}</td>
+          <td contenteditable="true">{{ userRole.roleId }}</td>
+          <td contenteditable="true">{{ userRole.userName }}</td>
+          <td contenteditable="true">{{ userRole.gender }}</td>
+          <td>
+            <button (click)="updateUserRole(i)" class="btn btn-primary btn-sm me-2 mb-2">Update</button>
+            <button (click)="deleteUserRole(i)" class="btn btn-danger btn-sm mb-2">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

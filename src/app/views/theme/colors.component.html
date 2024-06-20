@@ -1,0 +1,64 @@
+<div class="ms-6">
+  <button (click)="addUser()" class="btn btn-primary mb-3">Create User</button>
+  <!-- Form for adding a new user -->
+  <div *ngIf="showForm" class="card card-custom mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Add New User</h5>
+      <div class="mb-3">
+        <label for="userName" class="form-label">User Name</label>
+        <input [(ngModel)]="newUser.userName" type="text" class="form-control" id="userName" placeholder="Enter user name">
+      </div>
+      <div class="mb-3">
+        <label for="userId" class="form-label">User ID</label>
+        <input [(ngModel)]="newUser.userId" type="text" class="form-control" id="userId" placeholder="Enter user ID">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input [(ngModel)]="newUser.email" type="email" class="form-control" id="email" placeholder="Enter email">
+      </div>
+      <div class="mb-3">
+        <label for="dob" class="form-label">Date of Birth</label>
+        <input [(ngModel)]="newUser.dob" type="date" class="form-control" id="dob">
+      </div>
+      <div class="mb-3">
+        <label for="gender" class="form-label">Gender</label>
+        <select [(ngModel)]="newUser.gender" class="form-select" id="gender">
+          <option value="" disabled>Select gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+      <button (click)="saveNewUser()" class="btn btn-success me-2">Save</button>
+      <button (click)="cancelAddUser()" class="btn btn-secondary">Cancel</button>
+    </div>
+  </div>
+  <!-- User table -->
+  <div class="card card-custom">
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>User Name</th>
+          <th>User ID</th>
+          <th>Email</th>
+          <th>Date of Birth</th>
+          <th>Gender</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="userTableBody">
+        <tr *ngFor="let user of users; let i = index">
+          <td contenteditable="true">{{ user.userName }}</td>
+          <td contenteditable="true">{{ user.userId }}</td>
+          <td contenteditable="true">{{ user.email }}</td>
+          <td contenteditable="true">{{ user.dob }}</td>
+          <td contenteditable="true">{{ user.gender }}</td>
+          <td>
+            <button (click)="updateUser(i)" class="btn btn-primary btn-sm me-2 mb-2">Update</button>
+            <button (click)="saveUser(i)" class="btn btn-success btn-sm me-2 mb-2">Save</button>
+            <button (click)="deleteUser(i)" class="btn btn-danger btn-sm mb-2">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
